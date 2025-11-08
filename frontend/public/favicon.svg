@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="50" fill="#1A365D"/>
+  
+  <!-- Flower petals (8 petals in a circle) -->
+  <!-- Top petal -->
+  <ellipse cx="50" cy="25" rx="8" ry="15" fill="#F4A261" opacity="0.9"/>
+  <!-- Top-right petal -->
+  <ellipse cx="65" cy="30" rx="8" ry="15" fill="#FFB6D9" opacity="0.9" transform="rotate(45 65 30)"/>
+  <!-- Right petal -->
+  <ellipse cx="75" cy="50" rx="8" ry="15" fill="#F4A261" opacity="0.9" transform="rotate(90 75 50)"/>
+  <!-- Bottom-right petal -->
+  <ellipse cx="65" cy="70" rx="8" ry="15" fill="#FFB6D9" opacity="0.9" transform="rotate(135 65 70)"/>
+  <!-- Bottom petal -->
+  <ellipse cx="50" cy="75" rx="8" ry="15" fill="#F4A261" opacity="0.9" transform="rotate(180 50 75)"/>
+  <!-- Bottom-left petal -->
+  <ellipse cx="35" cy="70" rx="8" ry="15" fill="#FFB6D9" opacity="0.9" transform="rotate(225 35 70)"/>
+  <!-- Left petal -->
+  <ellipse cx="25" cy="50" rx="8" ry="15" fill="#F4A261" opacity="0.9" transform="rotate(270 25 50)"/>
+  <!-- Top-left petal -->
+  <ellipse cx="35" cy="30" rx="8" ry="15" fill="#FFB6D9" opacity="0.9" transform="rotate(315 35 30)"/>
+  
+  <!-- Center of flower -->
+  <circle cx="50" cy="50" r="12" fill="#A8D5BA"/>
+  <circle cx="50" cy="50" r="8" fill="#85C7A1"/>
+  
+  <!-- Inner details -->
+  <circle cx="48" cy="48" r="2" fill="#F4A261" opacity="0.6"/>
+  <circle cx="52" cy="48" r="2" fill="#F4A261" opacity="0.6"/>
+  <circle cx="50" cy="52" r="2" fill="#F4A261" opacity="0.6"/>
+</svg>

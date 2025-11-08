@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <!-- Rounded background -->
+  <rect width="180" height="180" rx="40" fill="#1A365D"/>
+  
+  <!-- Flower petals (8 petals in a circle) - scaled larger -->
+  <!-- Top petal -->
+  <ellipse cx="90" cy="45" rx="14" ry="27" fill="#F4A261" opacity="0.9"/>
+  <!-- Top-right petal -->
+  <ellipse cx="117" cy="54" rx="14" ry="27" fill="#FFB6D9" opacity="0.9" transform="rotate(45 117 54)"/>
+  <!-- Right petal -->
+  <ellipse cx="135" cy="90" rx="14" ry="27" fill="#F4A261" opacity="0.9" transform="rotate(90 135 90)"/>
+  <!-- Bottom-right petal -->
+  <ellipse cx="117" cy="126" rx="14" ry="27" fill="#FFB6D9" opacity="0.9" transform="rotate(135 117 126)"/>
+  <!-- Bottom petal -->
+  <ellipse cx="90" cy="135" rx="14" ry="27" fill="#F4A261" opacity="0.9" transform="rotate(180 90 135)"/>
+  <!-- Bottom-left petal -->
+  <ellipse cx="63" cy="126" rx="14" ry="27" fill="#FFB6D9" opacity="0.9" transform="rotate(225 63 126)"/>
+  <!-- Left petal -->
+  <ellipse cx="45" cy="90" rx="14" ry="27" fill="#F4A261" opacity="0.9" transform="rotate(270 45 90)"/>
+  <!-- Top-left petal -->
+  <ellipse cx="63" cy="54" rx="14" ry="27" fill="#FFB6D9" opacity="0.9" transform="rotate(315 63 54)"/>
+  
+  <!-- Center of flower -->
+  <circle cx="90" cy="90" r="22" fill="#A8D5BA"/>
+  <circle cx="90" cy="90" r="15" fill="#85C7A1"/>
+  
+  <!-- Inner sparkle details -->
+  <circle cx="87" cy="87" r="3" fill="#F4A261" opacity="0.6"/>
+  <circle cx="93" cy="87" r="3" fill="#F4A261" opacity="0.6"/>
+  <circle cx="90" cy="93" r="3" fill="#F4A261" opacity="0.6"/>
+</svg>

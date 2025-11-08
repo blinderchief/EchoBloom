@@ -1,0 +1,71 @@
+# Documentation files (keep these local)
+APPLICATION_STRUCTURE.md
+COMPONENT_ARCHITECTURE.md
+ERROR_FIX_GUIDE.md
+ERROR_FIX_SUMMARY.md
+HYDRATION_FIX.md
+PROGRESS_UPDATE.md
+SPEECH_RECOGNITION_FIX.md 
+STARTUP_READY.md
+WELLNESS_ACTIVITIES_IMPLEMENTATION.md
+
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/__pycache__/
+backend/**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+backend/.env
+
+# Next.js build output
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# Python virtual environment
+backend/venv/
+backend/.venv/
+backend/env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+
+# Testing
+coverage/
+.pytest_cache/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Misc
+.vercel
+.turbo
+dist/
+tmp/
