@@ -70,21 +70,64 @@ export const GestaltGreenhouse: React.FC<GestaltGreenhouseProps> = ({ userId }) 
 
   const fetchEmotionPalette = async () => {
     try {
+      console.log('Fetching emotion palette from /api/alchemy/emotion-palette')
       const response = await apiFetch('/api/alchemy/emotion-palette')
-      const data = await response.json()
+      console.log('Response status:', response.status)
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('Error response:', errorText)
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      
+      // Check if response has content
+      const text = await response.text()
+      if (!text) {
+        throw new Error('Empty response from server')
+      }
+      
+      const data = JSON.parse(text)
+      console.log('Emotion palette loaded:', data)
       setEmotions(data.emotions)
     } catch (error) {
-      console.error('Error fetching emotions:', error)
+      console.error('Error fetching emotions:', error, error instanceof Error ? error.message : '')
+      // Use fallback emotions if fetch fails
+      setEmotions([
+        { name: "Joy", color: "from-yellow-400 to-orange-400", description: "Bright, expansive, warm" },
+        { name: "Sadness", color: "from-blue-500 to-indigo-600", description: "Deep, heavy, reflective" },
+        { name: "Anger", color: "from-red-500 to-red-700", description: "Hot, intense, energizing" },
+        { name: "Fear", color: "from-purple-600 to-gray-700", description: "Sharp, alerting, protective" },
+        { name: "Curiosity", color: "from-sky-400 to-teal-400", description: "Light, seeking, open" },
+        { name: "Gratitude", color: "from-pink-300 to-rose-400", description: "Warm, open, tender" },
+        { name: "Anxiety", color: "from-yellow-600 to-red-600", description: "Buzzing, racing, urgent" },
+        { name: "Calm", color: "from-blue-300 to-green-300", description: "Soft, steady, grounded" },
+      ])
     }
   }
 
   const fetchSuggestedPairs = async () => {
     try {
+      console.log(`Fetching suggested pairs for user: ${userId}`)
       const response = await apiFetch(`/api/alchemy/suggested-pairs/${userId}`)
-      const data = await response.json()
+      console.log('Suggested pairs response status:', response.status)
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('Error response:', errorText)
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      
+      // Check if response has content
+      const text = await response.text()
+      if (!text) {
+        throw new Error('Empty response from server')
+      }
+      
+      const data = JSON.parse(text)
+      console.log('Suggested pairs loaded:', data)
       setSuggestedPairs(data.suggested_pairs || [])
     } catch (error) {
-      console.error('Error fetching suggestions:', error)
+      console.error('Error fetching suggestions:', error, error instanceof Error ? error.message : '')
+      // Silently fail for suggestions - they're optional
+      setSuggestedPairs([])
     }
   }
 
@@ -127,6 +170,7 @@ export const GestaltGreenhouse: React.FC<GestaltGreenhouseProps> = ({ userId }) 
 
     setIsFusing(true)
     try {
+      console.log('Fusing emotions:', selectedEmotion1.name, '+', selectedEmotion2.name)
       const response = await apiFetch('/api/alchemy/fuse', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -137,10 +181,26 @@ export const GestaltGreenhouse: React.FC<GestaltGreenhouseProps> = ({ userId }) 
         })
       })
 
-      const data = await response.json()
+      console.log('Fusion response status:', response.status)
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('Fusion error response:', errorText)
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      // Check if response has content
+      const text = await response.text()
+      if (!text) {
+        throw new Error('Empty fusion response from server')
+      }
+
+      const data = JSON.parse(text)
+      console.log('Fusion result:', data)
       setFusionData(data)
     } catch (error) {
-      console.error('Error fusing emotions:', error)
+      console.error('Error fusing emotions:', error, error instanceof Error ? error.message : '')
+      // Show error to user
+      alert('Failed to fuse emotions. Please try again.')
     } finally {
       setIsFusing(false)
     }
@@ -383,7 +443,7 @@ export const GestaltGreenhouse: React.FC<GestaltGreenhouseProps> = ({ userId }) 
                           key={emotion.name}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: idx * 0.03 }}
+                          transition={{ delay: index * 0.03 }}
                           draggable
                           onDragStart={(e) => handleEmotionDragStart(e, emotion)}
                           onDragEnd={() => setDraggedEmotion(null)}
